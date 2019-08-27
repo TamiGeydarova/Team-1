@@ -1,0 +1,15 @@
+/.idea/
+bin
+/target/
+/lib
+/build/
+/.gradle/
+/*.log
+*.txt
+out/
+/*.iml
+/allure-report/
+/allure-results/
+.classpath
+.project
+.settings/
