@@ -29,7 +29,7 @@ public class WebDriverLib implements WebDriver {
     public void openBrowser() {
         switch (browser) {
             case "chrome":
-                System.setProperty("webdriver.chrome.driver", driverPath + "chromedriver");
+                System.setProperty("webdriver.chrome.driver", driverPath + "chromedriver.exe");
                 driver = new ChromeDriver();
                 break;
             case "firefox":
@@ -159,5 +159,3 @@ public class WebDriverLib implements WebDriver {
     }
 
 }
-
-
