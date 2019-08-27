@@ -1,6 +1,8 @@
 # Test Automation framework for Web
 **Author**: Maksims Gusakovs.
 
+For proper framework functionaing ensure **Java JDK** is installed
+
 ## Features and stuff
 * Code and whole test step reuse benefit from Cucumber;
 * Different properties (yaml, csv) readers to set up default project configurations;
