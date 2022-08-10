@@ -25,7 +25,7 @@ public class EditAddressBookSteps extends GeneralSteps{
         editAddressBookPage.setLogin();
     }
 
-    @When("^I on the Address Book page$")
+    @When("^I am on the Address Book page$")
     public void iOnAddressBook(){
         assertEquals("http://www.demoshop24.com/index.php?route=account/address",
                 driver.getCurrentUrl());

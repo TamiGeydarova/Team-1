@@ -6,7 +6,7 @@ Feature:  Edit Address book
 
     @US2S1T8
     Scenario: US2S1T8
-      When I on the Address Book page
+      When I am on the Address Book page
       Then I click on New Address button
       And I fill in all the input fields
         | First Name      | Sarah              |
@@ -18,3 +18,30 @@ Feature:  Edit Address book
         | Region / State  | California         |
       Then I press continue
       Then I see a successful message
+
+    @US2S1T9
+    Scenario: US2S1T8
+      When I am on the Address Book page
+      Then I click on New Address button
+      And I fill in all the input fields
+        | First Name      | Michal              |
+        | Last Name       | Jackson             |
+        | Address 1       | Baker street 77     |
+        | City            | London              |
+        | Post Code       | GB777               |
+        | Country         | United Kingdom      |
+        | Region / State  | Dundee              |
+      Then I press continue
+      Then I see a successful message
+
+    @US2S1T10
+
+#    @US2S1T11
+#    @US2S1T12
+#    @US2S1T13
+#    @US2S1T14
+#    @US2S1T15
+#    @US2S1T16
+#    @US2S1T17
+#    @US2S1T18
+#    @US2S1T19

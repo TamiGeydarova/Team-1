@@ -11,9 +11,6 @@ import org.openqa.selenium.support.ui.Select;
 import static org.junit.Assert.*;
 
 public class EditAddressBookPage extends Page{
-//    @FindBy(how = How.XPATH, using = "//a[href=\"http://www.demoshop24.com/index.php?route=account/login\"]")
-//    private WebElement login;
-
     @FindBy(how = How.ID, using = "input-email")
     private WebElement inputEmail;
     @FindBy(how = How.ID, using = "input-password")
