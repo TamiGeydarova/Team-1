@@ -107,4 +107,9 @@ public class EditAddressBookSteps extends GeneralSteps{
             editAddressBookPage.fillInName(name);
 //        }
     }
+
+    @And("^I clean the first name$")
+    public void iCleanTheFirstName(){
+        editAddressBookPage.fillInName("");
+    }
 }

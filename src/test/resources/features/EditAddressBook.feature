@@ -87,7 +87,12 @@ Feature:  Edit Address book
         |   J   |   Jvjaijbaefbukvabfkbvbrbfavrbfbvbvrubvuaerfbuvarnfbusetnifuvseubnuvsenbuvsvehrguivshetubhsbktubvustbusfbbstfy   |
 
     @US2S1T14
-
+    Scenario: US2S1T13
+      When I am on the Address Book page
+      Then I click on Edit button
+      And I clean the first name
+      Then I press continue
+      Then I see warning messages and stay the same page
 
 #    @US2S1T15
 #    @US2S1T16
