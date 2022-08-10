@@ -6,11 +6,16 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import pageObjects.EditAddressBookPage;
 
+import java.util.List;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import static junit.framework.TestCase.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class EditAddressBookSteps extends GeneralSteps{
     private EditAddressBookPage editAddressBookPage = new EditAddressBookPage(driver);
@@ -56,6 +61,25 @@ public class EditAddressBookSteps extends GeneralSteps{
     public void iSeeASuccessfulMessage() throws Throwable {
         editAddressBookPage.checkTheAlertMsg();
     };
+
+    @Then("^I see warning messages and stay the same page$")
+    public void iSeeWarnMsgAndStayTheSamePage(){
+        List<WebElement> el = driver.findElements(By.className("text-danger"));
+        for (int i = 0; i<el.size(); i++){
+            assertTrue(el.get(i).isDisplayed());
+        }
+        //I have to check url first than the string!
+        assertTrue(driver.getCurrentUrl().contains("http://www.demoshop24.com/index.php?route=account/address/edit&address_id="));
+
+//        USELESS STUFF
+//        Pattern curPage = Pattern.compile("http://www.demoshop24.com/index.php?route=account/address/edit&address_id=3284");
+//        Matcher matcher = curPage.matcher(driver.getCurrentUrl());
+//        assertTrue(matcher.find());
+
+//        String curPage = "http://www.demoshop24.com/index.php?route=account/address/edit&address_id=";
+//        assertTrue(curPage.contains(driver.getCurrentUrl()));
+//        assertTrue(StringUtils.containsIgnoreCase(curPage, driver.getCurrentUrl().toString()));
+    }
 
     @Then("^I see a default address$")
     public void iSeeADefaultAddress(){

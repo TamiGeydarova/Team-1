@@ -56,7 +56,22 @@ Feature:  Edit Address book
         | Region / State  | Dundee              |
       Then I press continue
       Then I see a message
-#    @US2S1T12
+
+    @US2S1T12
+    Scenario: US2S1T12
+      When I am on the Address Book page
+      Then I click on Edit button
+      And I fill in all the input fields
+        | First Name      |                       |
+        | Last Name       |                       |
+        | Address 1       |                       |
+        | City            |                       |
+        | Post Code       |                       |
+        | Country         | --- Please Select --- |
+        | Region / State  |  --- None ---         |
+      Then I press continue
+      Then I see warning messages and stay the same page
+
 #    @US2S1T13
 #    @US2S1T14
 #    @US2S1T15
