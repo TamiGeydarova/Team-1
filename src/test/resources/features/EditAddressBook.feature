@@ -136,3 +136,12 @@ Feature:  Edit Address book
       Then I see warning messages and stay the same page
 
     @US2S1T19
+    Scenario Outline: US2S1T19
+      When I am on the Address Book page
+      Then I click on Edit button
+      And I change the City <address>
+      Then I press continue
+      Then I see a message
+      Examples:
+        | address |
+        |Rīga|

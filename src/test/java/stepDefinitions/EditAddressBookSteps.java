@@ -132,4 +132,9 @@ public class EditAddressBookSteps extends GeneralSteps{
     public void iCleanTheAddress1(){
         editAddressBookPage.fillAddress1("");
     }
+
+    @And("^I change the City (.*)$")
+    public void iChangeTheCity(String city){
+        editAddressBookPage.fillCityInput(city);
+    }
 }
