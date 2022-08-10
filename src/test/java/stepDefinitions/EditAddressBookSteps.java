@@ -108,8 +108,23 @@ public class EditAddressBookSteps extends GeneralSteps{
 //        }
     }
 
+    @And("^I change the last name (.*)$")
+    public void iChangeTheLastName(String name){
+        editAddressBookPage.fillInLastName(name);
+    }
+
     @And("^I clean the first name$")
     public void iCleanTheFirstName(){
         editAddressBookPage.fillInName("");
+    }
+
+    @And("^I clean the last name$")
+    public void iCleanTheLastName(){
+        editAddressBookPage.fillInLastName("");
+    }
+
+    @And("^I change the Address1 (.*)$")
+    public void iChangeTheAddress1(String address){
+        editAddressBookPage.fillAddress1(address);
     }
 }

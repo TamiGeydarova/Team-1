@@ -87,15 +87,45 @@ Feature:  Edit Address book
         |   J   |   Jvjaijbaefbukvabfkbvbrbfavrbfbvbvrubvuaerfbuvarnfbusetnifuvseubnuvsenbuvsvehrguivshetubhsbktubvustbusfbbstfy   |
 
     @US2S1T14
-    Scenario: US2S1T13
+    Scenario: US2S1T14
       When I am on the Address Book page
       Then I click on Edit button
       And I clean the first name
       Then I press continue
       Then I see warning messages and stay the same page
 
-#    @US2S1T15
-#    @US2S1T16
-#    @US2S1T17
+    @US2S1T15
+    Scenario Outline: US2S1T13
+      When I am on the Address Book page
+      Then I click on Edit button
+      And I change the last name <short>
+      Then I press continue
+      Then I see warning messages and stay the same page
+      And I change the last name <long>
+      Then I press continue
+      Then I see warning messages and stay the same page
+      Examples:
+        | short | long |
+        |   J   |   Jvjaijbaefbukvabfkbvbrbfavrbfbvbvrubvuaerfbuvarnfbusetnifuvseubnuvsenbuvsvehrguivshetubhsbktubvustbusfbbstfy   |
+
+    @US2S1T16
+    Scenario: US2S1T16
+      When I am on the Address Book page
+      Then I click on Edit button
+      And I clean the last name
+      Then I press continue
+      Then I see warning messages and stay the same page
+
+    @US2S1T17
+    Scenario Outline: US2S1T17
+      When I am on the Address Book page
+      Then I click on Edit button
+      And I change the Address1 <address>
+      Then I press continue
+      Then I see a message
+      Examples:
+        | address |
+        |Rīgas iela 153|
+
 #    @US2S1T18
 #    @US2S1T19
