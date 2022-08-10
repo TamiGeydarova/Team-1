@@ -72,8 +72,23 @@ Feature:  Edit Address book
       Then I press continue
       Then I see warning messages and stay the same page
 
-#    @US2S1T13
-#    @US2S1T14
+    @US2S1T13
+    Scenario Outline: US2S1T13
+      When I am on the Address Book page
+      Then I click on Edit button
+      And I change the first name <short>
+      Then I press continue
+      Then I see warning messages and stay the same page
+      And I change the first name <long>
+      Then I press continue
+      Then I see warning messages and stay the same page
+      Examples:
+        | short | long |
+        |   J   |   Jvjaijbaefbukvabfkbvbrbfavrbfbvbvrubvuaerfbuvarnfbusetnifuvseubnuvsenbuvsvehrguivshetubhsbktubvustbusfbbstfy   |
+
+    @US2S1T14
+
+
 #    @US2S1T15
 #    @US2S1T16
 #    @US2S1T17

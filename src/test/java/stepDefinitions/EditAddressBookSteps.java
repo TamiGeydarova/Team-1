@@ -100,4 +100,11 @@ public class EditAddressBookSteps extends GeneralSteps{
     public void iClickOnEditBtn(){
         editAddressBookPage.iClickOnEditBtn(0);
     }
+
+    @And("^I change the first name (.*)$")
+    public void iChangeTheFirstName(String name){
+//        if(name.length() < 3 || name.length()>32){
+            editAddressBookPage.fillInName(name);
+//        }
+    }
 }
