@@ -53,7 +53,7 @@ public class EditAddressBookSteps extends GeneralSteps{
     };
 
     @Then("^I see a message$")
-    public void iSeeASuccessfulMessage(){
+    public void iSeeASuccessfulMessage() throws Throwable {
         editAddressBookPage.checkTheAlertMsg();
     };
 
@@ -72,4 +72,8 @@ public class EditAddressBookSteps extends GeneralSteps{
         editAddressBookPage.iConfirmTheAction();
     }
 
+    @Then("^I click on Edit button")
+    public void iClickOnEditBtn(){
+        editAddressBookPage.iClickOnEditBtn(0);
+    }
 }

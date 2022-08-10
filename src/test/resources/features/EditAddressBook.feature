@@ -42,8 +42,20 @@ Feature:  Edit Address book
       Then I confirm the action
       Then I see a message
 
-#    @US2S1T11
-
+    @US2S1T11
+    Scenario: US2S1T11
+      When I am on the Address Book page
+      Then I click on Edit button
+      And I fill in all the input fields
+        | First Name      | Michal              |
+        | Last Name       | Jackson             |
+        | Address 1       | Baker street 77     |
+        | City            | London              |
+        | Post Code       | GB777               |
+        | Country         | United Kingdom      |
+        | Region / State  | Dundee              |
+      Then I press continue
+      Then I see a message
 #    @US2S1T12
 #    @US2S1T13
 #    @US2S1T14

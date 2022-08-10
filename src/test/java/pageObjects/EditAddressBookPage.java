@@ -1,6 +1,7 @@
 package pageObjects;
 
 import flowWorkers.WebDriverLib;
+import gherkin.lexer.Th;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -37,6 +38,8 @@ public class EditAddressBookPage extends Page{
     private WebElement continueBtn;
     @FindBy(how = How.XPATH, using = "//a[@class='btn btn-danger']")
     private WebElement deleteBtn;
+//    @FindBy(how = How.XPATH, using = "//div[@class='pull-right']//a[@class='btn btn-info']")
+//    private WebElement editBtn;
 
     //MESSAGES
     @FindBy(how = How.CLASS_NAME, using = "alert")
@@ -63,26 +66,31 @@ public class EditAddressBookPage extends Page{
 
     public void fillInName (String name){
         driver.waitForElementPresent(inputFirstName);
+        inputFirstName.clear();
         inputFirstName.sendKeys(name);
     }
 
     public void fillInLastName (String name){
         driver.waitForElementPresent(inputLastName);
+        inputLastName.clear();
         inputLastName.sendKeys(name);
     }
 
     public void fillAddress1(String address1){
         driver.waitForElementPresent(inputAddress1);
+        inputAddress1.clear();
         inputAddress1.sendKeys(address1);
     }
 
     public void fillCityInput(String city){
         driver.waitForElementPresent(inputCity);
+        inputCity.clear();
         inputCity.sendKeys(city);
     }
 
     public void fillPostcode(String postcode){
         driver.waitForElementPresent(inputPostcode);
+        inputPostcode.clear();
         inputPostcode.sendKeys(postcode);
     }
 
@@ -106,14 +114,19 @@ public class EditAddressBookPage extends Page{
         deleteBtn.click();
     }
 
+    public void iClickOnEditBtn(int index){
+        driver.findElements(By.className("btn-info")).get(index).click();
+    }
+
     public void iConfirmTheAction(){
         driver.switchTo().alert().accept();
     }
 
-    public void checkTheAlertMsg(){
+    public void checkTheAlertMsg() throws Throwable {
         String messages[] = {
                 "Your address has been successfully added",
                 "Warning: You must have at least one address!",
+                "Your address has been successfully updated"
         };
         assertTrue(Arrays.asList(messages).contains(alertMsg.getText()));
     }
