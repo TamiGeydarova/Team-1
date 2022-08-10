@@ -8,9 +8,12 @@ import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 
+import java.util.Arrays;
+
 import static org.junit.Assert.*;
 
 public class EditAddressBookPage extends Page{
+    //LOGIN PAGE INPUTS
     @FindBy(how = How.ID, using = "input-email")
     private WebElement inputEmail;
     @FindBy(how = How.ID, using = "input-password")
@@ -20,6 +23,7 @@ public class EditAddressBookPage extends Page{
     @FindBy(how = How.XPATH, using = "//div[@class='pull-right']//a")
     private WebElement addressBookBtn;
 
+    //ADDRESS INPUTS
     @FindBy(id = "input-firstname") private WebElement inputFirstName;
     @FindBy(id = "input-lastname") private WebElement inputLastName;
     @FindBy(id = "input-address-1") private WebElement inputAddress1;
@@ -28,11 +32,17 @@ public class EditAddressBookPage extends Page{
     @FindBy(id = "input-country") private WebElement dropdownCountry;
     @FindBy(id = "input-zone") private WebElement dropdownRegState;
 
+    //BUTTONS
     @FindBy(how = How.XPATH, using = "//*[@value='Continue']")
     private WebElement continueBtn;
-    @FindBy(how = How.CLASS_NAME, using = "alert-success")
-    private WebElement successMsg;
+    @FindBy(how = How.XPATH, using = "//a[@class='btn btn-danger']")
+    private WebElement deleteBtn;
 
+    //MESSAGES
+    @FindBy(how = How.CLASS_NAME, using = "alert")
+    private WebElement alertMsg;
+
+    //VARIABLES
     private String eMail = "johndoe@gmail.com";
     private String password = "password12345";
 
@@ -92,7 +102,19 @@ public class EditAddressBookPage extends Page{
         continueBtn.click();
     }
 
-    public void checkTheSuccessMsg(){
-        assertEquals("Your address has been successfully added", successMsg.getText());
+    public void deleteDefaultBtn(){
+        deleteBtn.click();
+    }
+
+    public void iConfirmTheAction(){
+        driver.switchTo().alert().accept();
+    }
+
+    public void checkTheAlertMsg(){
+        String messages[] = {
+                "Your address has been successfully added",
+                "Warning: You must have at least one address!",
+        };
+        assertTrue(Arrays.asList(messages).contains(alertMsg.getText()));
     }
 }

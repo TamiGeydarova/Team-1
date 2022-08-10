@@ -17,10 +17,10 @@ Feature:  Edit Address book
         | Country         | United States      |
         | Region / State  | California         |
       Then I press continue
-      Then I see a successful message
+      Then I see a message
 
     @US2S1T9
-    Scenario: US2S1T8
+    Scenario: US2S1T9
       When I am on the Address Book page
       Then I click on New Address button
       And I fill in all the input fields
@@ -32,11 +32,18 @@ Feature:  Edit Address book
         | Country         | United Kingdom      |
         | Region / State  | Dundee              |
       Then I press continue
-      Then I see a successful message
+      Then I see a message
 
     @US2S1T10
+    Scenario: US2S1T10
+      When I am on the Address Book page
+      Then I see a default address
+      And I delete this default address
+      Then I confirm the action
+      Then I see a message
 
 #    @US2S1T11
+
 #    @US2S1T12
 #    @US2S1T13
 #    @US2S1T14

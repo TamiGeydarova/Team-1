@@ -52,9 +52,24 @@ public class EditAddressBookSteps extends GeneralSteps{
         editAddressBookPage.pressContinueBtn();
     };
 
-    @Then("^I see a successful message$")
+    @Then("^I see a message$")
     public void iSeeASuccessfulMessage(){
-        editAddressBookPage.checkTheSuccessMsg();
+        editAddressBookPage.checkTheAlertMsg();
     };
+
+    @Then("^I see a default address$")
+    public void iSeeADefaultAddress(){
+        return; //I DON'T KNOW WHAT HTML ELEMENT OR ATTRIBUTE NEED TO TRACK
+    }
+
+    @And("^I delete this default address$")
+    public void iDeleteDefaultAddress(){
+        editAddressBookPage.deleteDefaultBtn();
+    }
+
+    @Then("^I confirm the action$")
+    public void iConfirmTheAction(){
+        editAddressBookPage.iConfirmTheAction();
+    }
 
 }
