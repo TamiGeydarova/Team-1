@@ -52,14 +52,15 @@ public class RegisterPage extends Page {
         driver.waitForElementPresent(inputPhoneNr);
         inputPhoneNr.sendKeys(phoneNr);
     }
-    public void  fillYourPassword(String password)  {
+    public void  fillYourPassword(String password) throws Exception {
         driver.waitForElementPresent(inputPassword);
         inputPassword.sendKeys(password);
+        Thread.sleep(2000);
     }
-    public void  fillConfirmPassword(String confirmPassword)  {
+    public void  fillConfirmPassword(String confirmPassword) throws Exception {
         driver.waitForElementPresent(inputConfirmPassword);
         inputConfirmPassword.sendKeys(confirmPassword);
-
+        Thread.sleep(2000);
     }
     public void inputForNewsletterSection () {
         driver.waitForElementPresent(radioButtonSubscribe);
