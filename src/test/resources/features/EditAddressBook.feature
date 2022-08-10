@@ -127,5 +127,12 @@ Feature:  Edit Address book
         | address |
         |Rīgas iela 153|
 
-#    @US2S1T18
-#    @US2S1T19
+    @US2S1T18
+    Scenario: US2S1T18
+      When I am on the Address Book page
+      Then I click on Edit button
+      And I clean the Address1
+      Then I press continue
+      Then I see warning messages and stay the same page
+
+    @US2S1T19
