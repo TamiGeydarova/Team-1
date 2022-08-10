@@ -9,4 +9,7 @@ public class Page {
 	public Page(WebDriverLib driver) {
 		this.driver = driver;
 	}
+
+    public Page() {
+    }
 }
