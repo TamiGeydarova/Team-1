@@ -10,7 +10,7 @@ Feature: Google Feature Example
     Examples:
       | SearchingText      | SearchingResult                            |
       | Selenium WebDriver | Selenium WebDriver                         |
-      | Cucumber Trainings | Online training - Cucumber School·Cucumber |
+#    | Cucumber Trainings | Online training - Cucumber School·Cucumber |
 
   @INSERT_TAG_HERE
   Scenario: Login into Google with incorrect user data
