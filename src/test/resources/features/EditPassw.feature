@@ -1,3 +1,4 @@
+@Team1
 Feature: Test password changing
   @US2S1T30
   Scenario: US2S1T30 Change password with valid input

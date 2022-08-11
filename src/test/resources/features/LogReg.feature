@@ -1,3 +1,4 @@
+@Team1
 Feature: Login After Registration Feature
 
   @US1S1T19_32
