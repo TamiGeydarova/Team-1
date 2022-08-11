@@ -1,11 +1,11 @@
 package pageObjects;
 
 import flowWorkers.WebDriverLib;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
-
 public class RegisterPage extends Page {
 
     @FindBy(how = How.CSS, using = "a[title='My Account']")
@@ -33,39 +33,42 @@ public class RegisterPage extends Page {
     @FindBy(xpath = "//*[@class='btn btn-primary']")
     WebElement continueWhenAccCreated;
 
-    private static String accCreatedMessage = "Your Account Has Been Created!";
-    private static String pswdDangerMsg = "Password must be between 4 and 20 characters!";
-    private static String privacyPolicyWarningMessage = "Warning: You must agree to the Privacy Policy!";
-    private static String fNameMessage = "First Name must be between 1 and 32 characters!";
-    private static String lNameMessage = "Last Name must be between 1 and 32 characters!";
-    private static String emailMessage = "E-Mail Address does not appear to be valid!";
-    private String telephMessage = "Telephone must be between 3 and 32 characters!";
-    public String getAccCreatedMessage() {
-        return accCreatedMessage;
+
+    public String getNotMachindPasswdMsg(String name) {
+        return driver.findElement(By.xpath("//div[text()='" + name + "']")).getText();
     }
-    public String getPswdDangerMsg() {
-        return pswdDangerMsg;
+
+    public String getAccCreatedMessage(String name) {
+        return driver.findElement(By.xpath("//h1[text()='" + name + "']")).getText();
+    }
+
+    public String getPswdDangerMsg(String name) {
+        return driver.findElement(By.xpath("//div[text()='" + name + "']")).getText();
     }
 
     public String getPrivacyPolicyWarningMessage() {
-        return privacyPolicyWarningMessage;
+        return driver.findElement(By.xpath("//*[text()=' Warning: You must agree to the Privacy Policy!']")).getText();
     }
 
     public String getfNameMessage() {
-        return fNameMessage;
+        return driver.findElement(By.xpath("//div[text()='First Name must be between 1 and 32 characters!']")).getText();
     }
+
     public String getlNameMessage() {
-        return lNameMessage;
+        return driver.findElement(By.xpath("//div[text()='Last Name must be between 1 and 32 characters!']")).getText();
     }
 
     public String getEmailMessage() {
-        return emailMessage;
+        return driver.findElement(By.xpath("//div[text()='E-Mail Address does not appear to be valid!']")).getText();
     }
+
     public String getTelephMessage() {
-        return telephMessage;
+        return driver.findElement(By.xpath("//div[text()='Telephone must be between 3 and 32 characters!']")).getText();
     }
 
-
+    public String getEmailErrorMessage(String name) {
+        return driver.findElement(By.xpath("//div[text()='" + " " + name + "']")).getText();
+    }
 
     public RegisterPage(WebDriverLib driver) {
         super(driver);

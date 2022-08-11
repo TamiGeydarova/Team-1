@@ -1,6 +1,5 @@
 package stepDefinitions;
 
-import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -10,6 +9,7 @@ import pageObjects.RegisterPage;
 
 import java.util.Map;
 
+import static core.utils.Constants.RegistrationForm.*;
 import static junit.framework.TestCase.assertEquals;
 
 public class RegisterSteps extends GeneralSteps {
@@ -18,7 +18,7 @@ public class RegisterSteps extends GeneralSteps {
 
     @Given("^I am on the shop homepage$")
     public void iAmOnTheShopHomepage() {
-        driver.get("http://www.demoshop24.com/index.php?route=common/home");
+        driver.get(homePage);
     }
 
     @When("^I click on My account$")
@@ -48,10 +48,9 @@ public class RegisterSteps extends GeneralSteps {
         registerPage.clickContinueOnRegisterPage();
     }
 
-    @Then("^I see \"([^\"]*)\"message$")
-    public void iSeeMessage(String arg0) {
-        assertEquals(registerPage.getAccCreatedMessage(), driver.findElement(By.xpath("//*[@id='content']/h1")).getText());
-
+    @Then("^I see \"([^\"]*)\" message$")
+    public void iSeeMessage(String name) {
+        assertEquals(accCreatedMessage, registerPage.getAccCreatedMessage(name));
     }
 
     @And("^I click continue in the message window$")
@@ -59,16 +58,15 @@ public class RegisterSteps extends GeneralSteps {
         registerPage.clickContinueInMessageWindow();
     }
 
-    @Then("^I Get redirected to \"([^\"]*)\" page$")
-    public void iGetRedirectedToPage(String arg0) throws Throwable {
-        assertEquals("http://www.demoshop24.com/index.php?route=account/account", driver.getCurrentUrl());
-
+    @Then("^I Get redirected to My account page$")
+    public void iGetRedirectedToPage() {
+        assertEquals(myAccountPage, driver.getCurrentUrl());
     }
 
     @Then("^I get \"([^\"]*)\" warning message$")
-    public void iGetWarningMessage(String arg0) {
+    public void iGetWarningMessage(String name) {
 
-        assertEquals(registerPage.getPswdDangerMsg(), driver.findElement(By.xpath("//div[text()='Password must be between 4 and 20 characters!']")).getText());
+        assertEquals(pswdDangerMsg, registerPage.getPswdDangerMsg(name));
     }
 
     @And("^I fill password input fields$")
@@ -94,9 +92,8 @@ public class RegisterSteps extends GeneralSteps {
 
 
     @Then("^I see \"([^\"]*)\" warning message$")
-    public void iSeeWarningMessage(String arg0) throws Throwable {
-        String notMachindPasswdMsg = "Password confirmation does not match password!";
-        assertEquals(notMachindPasswdMsg, driver.findElement(By.xpath("//*[@class=\"text-danger\"]")).getText());
+    public void iSeeWarningMessage(String name) throws Throwable {
+        assertEquals(notMachindPasswdMsg, registerPage.getNotMachindPasswdMsg(name));
     }
 
     @And("^I leave all input fields empty$")
@@ -111,29 +108,27 @@ public class RegisterSteps extends GeneralSteps {
 
     @Then("^I see error messages$")
     public void iSeeErrorMessages() throws InterruptedException {
-        assertEquals(registerPage.getfNameMessage(), driver.findElement(By.xpath("//div[text()='First Name must be between 1 and 32 characters!']")).getText());
-        assertEquals(registerPage.getlNameMessage(), driver.findElement(By.xpath("//div[text()='Last Name must be between 1 and 32 characters!']")).getText());
-        assertEquals(registerPage.getEmailMessage(), driver.findElement(By.xpath("//div[text()='E-Mail Address does not appear to be valid!']")).getText());
-//        assertEquals(emailMessage, driver.findElement(By.xpath("//div[text()='E-Mail Address does not appear to be valid!']")).getText());
-        assertEquals(registerPage.getTelephMessage(), driver.findElement(By.xpath("//div[text()='Telephone must be between 3 and 32 characters!']")).getText());
-        assertEquals(registerPage.getPswdDangerMsg(), driver.findElement(By.xpath("//div[text()='Password must be between 4 and 20 characters!']")).getText());
-        Thread.sleep(3000);
-        assertEquals(registerPage.getPrivacyPolicyWarningMessage(), driver.findElement(By.xpath("//*[text()=' Warning: You must agree to the Privacy Policy!']")).getText());
+        assertEquals(fNameMessage, registerPage.getfNameMessage());
+        assertEquals(lNameMessage, registerPage.getlNameMessage());
+        assertEquals(emailMessage, registerPage.getEmailMessage());
+        assertEquals(telephMessage, registerPage.getTelephMessage());
+        assertEquals(pswdDangerMsg, registerPage.getPswdDangerMsg(pswdDangerMsg));
+        assertEquals(privacyPolicyWarningMessage, registerPage.getPrivacyPolicyWarningMessage());
     }
 
     @Then("^I see error messages for input fields only$")
     public void iSeeErrorMessagesWithNoPrivacyPolicy() {
 
-        assertEquals(registerPage.getfNameMessage(), driver.findElement(By.xpath("//div[text()='First Name must be between 1 and 32 characters!']")).getText());
-        assertEquals(registerPage.getlNameMessage(), driver.findElement(By.xpath("//div[text()='Last Name must be between 1 and 32 characters!']")).getText());
-        assertEquals(registerPage.getEmailMessage(), driver.findElement(By.xpath("//div[text()='E-Mail Address does not appear to be valid!']")).getText());
-        assertEquals(registerPage.getTelephMessage(), driver.findElement(By.xpath("//div[text()='Telephone must be between 3 and 32 characters!']")).getText());
-        assertEquals(registerPage.getPswdDangerMsg(), driver.findElement(By.xpath("//div[text()='Password must be between 4 and 20 characters!']")).getText());
+        assertEquals(fNameMessage, registerPage.getfNameMessage());
+        assertEquals(lNameMessage, registerPage.getlNameMessage());
+        assertEquals(emailMessage, registerPage.getEmailMessage());
+        assertEquals(telephMessage, registerPage.getTelephMessage());
+        assertEquals(pswdDangerMsg, registerPage.getPswdDangerMsg(pswdDangerMsg));
     }
 
     @Then("^I can see \"([^\"]*)\" message$")
-    public void iCanSeeMessage(String msgName) {
-     assertEquals(msgName, driver.findElement(By.xpath("//div[text()=' Warning: E-Mail Address is already registered!']")).getText());
+    public void iCanSeeMessage(String name) {
+        assertEquals(alreadyCreatedMessage, registerPage.getEmailErrorMessage(name));
     }
 
     @And("^I tick the privacy policy$")
@@ -142,7 +137,7 @@ public class RegisterSteps extends GeneralSteps {
     }
 
     @And("^I fill all fields except email$")
-    public void iFillAllFieldsExceptEmail(Map <String, String> valuesToEnter) throws Exception {
+    public void iFillAllFieldsExceptEmail(Map<String, String> valuesToEnter) throws Exception {
         registerPage.fillInName(valuesToEnter.get("name"));
         registerPage.fillInLastName(valuesToEnter.get("surname"));
         registerPage.fillInTelephone(valuesToEnter.get("telephone"));
@@ -153,7 +148,7 @@ public class RegisterSteps extends GeneralSteps {
 
     @Then("^I see email invalid error message$")
     public void iSeeEmailInvalidErrorMessage() {
-        assertEquals(registerPage.getEmailMessage(), driver.findElement(By.xpath("//div[text()='E-Mail Address does not appear to be valid!']")).getText());
+        assertEquals(registerPage.getEmailMessage(), registerPage.getEmailMessage());
     }
 
     @And("^I fill all fields except password$")
@@ -167,6 +162,6 @@ public class RegisterSteps extends GeneralSteps {
 
     @Then("^I see password invalid message$")
     public void iSeePasswordInvalidMessage() {
-        assertEquals(registerPage.getPswdDangerMsg(), driver.findElement(By.xpath("//div[text()='Password must be between 4 and 20 characters!']")).getText());
+        assertEquals(pswdDangerMsg, registerPage.getPswdDangerMsg(pswdDangerMsg));
     }
 }

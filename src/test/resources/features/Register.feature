@@ -1,3 +1,4 @@
+@runAll
 Feature: Register scenario tested
 
   Background:
@@ -10,14 +11,14 @@ Feature: Register scenario tested
     And I fill in all the input fields
       | name             | Joey                   |
       | surname          | Tribbiani              |
-      | email            | jhhjbopthrib@gmail.com |
+      | email            | jhshrb@gmarel.com |
       | telephone        | 123456789              |
       | password         | password123            |
       | confirm password | password123            |
     And I press continue
-    Then I see "Your Account Has Been Created!"message
+    Then I see "Your Account Has Been Created!" message
     And I click continue in the message window
-    Then I Get redirected to "My account" page
+    Then I Get redirected to My account page
 
   @US1S1T8
   Scenario: US1S1T8 Register happy path (paswd with sp
@@ -27,14 +28,14 @@ Feature: Register scenario tested
     And I fill in all the input fields
       | name             | Joey           |
       | surname          | Tribbiani      |
-      | email            | jrib@gmail.com |
+      | email            | tefib@gmail.com |
       | telephone        | 123456789      |
       | password         | password123@!  |
       | confirm password | password123@!  |
     And I press continue
-    Then I see "Your Account Has Been Created!"message
+    Then I see "Your Account Has Been Created!" message
     And I click continue in the message window
-    Then I Get redirected to "My account" page
+    Then I Get redirected to My account page
 
   @US1S1T9
   Scenario: US1S1T9 Register passwd too short
