@@ -9,12 +9,12 @@ Feature: Register scenario tested
     When I click on My account
     And I select Register in My account menu
     And I fill in all the input fields
-      | name             | Joey                   |
-      | surname          | Tribbiani              |
+      | name             | Joey              |
+      | surname          | Tribbiani         |
       | email            | jhshrb@gmarel.com |
-      | telephone        | 123456789              |
-      | password         | password123            |
-      | confirm password | password123            |
+      | telephone        | 123456789         |
+      | password         | password123       |
+      | confirm password | password123       |
     And I press continue
     Then I see "Your Account Has Been Created!" message
     And I click continue in the message window
@@ -26,12 +26,12 @@ Feature: Register scenario tested
     When I click on My account
     And I select Register in My account menu
     And I fill in all the input fields
-      | name             | Joey           |
-      | surname          | Tribbiani      |
+      | name             | Joey            |
+      | surname          | Tribbiani       |
       | email            | tefib@gmail.com |
-      | telephone        | 123456789      |
-      | password         | password123@!  |
-      | confirm password | password123@!  |
+      | telephone        | 123456789       |
+      | password         | password123@!   |
+      | confirm password | password123@!   |
     And I press continue
     Then I see "Your Account Has Been Created!" message
     And I click continue in the message window
@@ -90,12 +90,12 @@ Feature: Register scenario tested
       | confirm password | 123       |
     Then I see email invalid error message
     And I fill all fields except password
-      | name             | Vita          |
-      | surname          | Vita          |
+      | name             | Vita           |
+      | surname          | Vita           |
       | email            | vivta@vita.com |
-      | telephone        | 123456789     |
-      | password         |               |
-      | confirm password |               |
+      | telephone        | 123456789      |
+      | password         |                |
+      | confirm password |                |
     Then I see password invalid message
     Examples:
       | name | surname | email         | telephone | password | confirm password |
