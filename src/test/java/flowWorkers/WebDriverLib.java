@@ -25,6 +25,10 @@ public class WebDriverLib implements WebDriver {
     private YamlConfig config = YamlFileManager.getProjectConfigurations();
     private String browser = config.getConfiguration("browser.name");
     private String baseURL = config.getConfiguration("browser.baseUrl");
+    private String OS = System.getProperty("os.name").toLowerCase();
+    private String chromeDriver;
+    private String firefoxDriver;
+    private String ieDriver;
 
     private String OS = System.getProperty("os.name").toLowerCase();
     private String chromeDriver;
@@ -44,7 +48,6 @@ public class WebDriverLib implements WebDriver {
             firefoxDriver = "geckodriver";
             ieDriver = "IEDriverServer";
         }
-
         switch (browser) {
             case "chrome":
                 System.setProperty("webdriver.chrome.driver", driverPath + chromeDriver);
