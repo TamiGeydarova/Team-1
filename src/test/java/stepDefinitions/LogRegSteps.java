@@ -49,6 +49,20 @@ public class LogRegSteps extends GeneralSteps {
         logRegPage.loginInto(userData.get("username"), userData.get("password"));
     }
 
+    @And("^write forgotten email1$")
+    public void typeforgottEmail() {
+        logRegPage.forgottenEmail("aijai@aijaia.lv");
+    }
+    @And("^write forgotten email2$")
+    public void typeforgottEmail2() {
+        logRegPage.forgottenEmail("vijzemite.lv");
+    }
+    @And("^write forgotten email3$")
+    public void typeforgottEmail3() {
+        logRegPage.forgottenEmail("vijzemite@con");
+    }
+
+
     @When("^click on login$")
     public void loginContinue() throws Throwable {
         logRegPage.clickLoginButton();
@@ -62,6 +76,11 @@ public class LogRegSteps extends GeneralSteps {
     @And("^I redirected to \"Account\" page$")
     public void toAccountPage() throws Throwable {
         assertEquals("http://www.demoshop24.com/index.php?route=account/account", driver.getCurrentUrl());
+    }
+
+    @And("^I redirected to \"Login\" page$")
+    public void toAccLoginPage() throws Throwable {
+        assertEquals("http://www.demoshop24.com/index.php?route=account/login", driver.getCurrentUrl());
     }
 
     @And("^click logout button$")
@@ -80,13 +99,28 @@ public class LogRegSteps extends GeneralSteps {
     }
 
     @Then("^I see error message$")
-    public void iSeeMessage() {
+    public void iSeeMessage() throws Throwable {
         assertEquals(error1,logRegPage.getMessage1());
     }
 
     @Then("^I see error message2$")
-    public void iSeeMessage2() {
+    public void iSeeMessage2() throws Throwable {
         error1 = "Please fill out empty fields!";
-        assertEquals(error1,logRegPage.getMessage2());
+        assertEquals(error1,logRegPage.getMessage1());
     }
+    @Then("^I see error messageFP$")
+    public void iSeeMessageFP() throws Throwable {
+        error1 = "Warning: The E-Mail Address was not found in our records, please try again!";
+        assertEquals(error1,logRegPage.getMessage1());
+    }
+
+    @Then("^I see error message wrong user or password$")
+    public void iSeeMessageUP()  throws Throwable{
+      assertEquals("Warning: No match for E-Mail Address and/or Password.",logRegPage.getMessage1());
+    }
+    @And ("^Click Forgotten$")
+    public void clickForgottenEmail()  throws Throwable{
+        logRegPage.forgotEmailLink();
+    }
+
 }

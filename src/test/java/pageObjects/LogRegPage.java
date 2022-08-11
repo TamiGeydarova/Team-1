@@ -31,7 +31,16 @@ public class LogRegPage extends Page {
     public WebElement logoutContButton;
     @FindBy(how = How.XPATH, using = "//*[@id=\"column-right\"]/div/a[13]")
     public WebElement logoutButton;
+    @FindBy(how = How.XPATH, using = "//*[@id=\"content\"]/div/div[2]/div/form/div[2]/a")
+    public WebElement forgottEmail;
+    @FindBy(how = How.ID, using = "input-email")
+    public WebElement forgottenlInput;
 
+    public void forgottenEmail(String email){
+        driver.waitForElementPresent(forgottenlInput);
+        (forgottenlInput).sendKeys(email);
+        forgottenlInput.sendKeys(Keys.ENTER);
+    }
 
     public void clickLogoutButton() {
         driver.waitForElementPresent(logoutButton);
@@ -58,6 +67,11 @@ public class LogRegPage extends Page {
         loginButton.click();
     }
 
+    public void forgotEmailLink(){
+        driver.waitForElementPresent(forgottEmail);
+        forgottEmail.click();
+    }
+
     public void loginInto(String username, String password) {
         driver.waitForElementPresent(emailInput);
         (emailInput).sendKeys(username);
@@ -67,14 +81,8 @@ public class LogRegPage extends Page {
     }
 
     public String getMessage1() {
-        String message1 = driver.findElement(By.cssSelector("alert-dismissible")).getText();
-        // web.findElement(By.xpath("//*[@id='" + elementId + "']/following-sibling::span[@class='error']")
+        String message1 = driver.findElement(By.cssSelector(".alert-dismissible")).getText();
         return message1;
-    }
-        public String getMessage2() {
-            String message2 = driver.findElement(By.cssSelector("alert-dismissible")).getText();
-            // web.findElement(By.xpath("//*[@id='" + elementId + "']/following-sibling::span[@class='error']")
-            return message2;
     }
 
 }

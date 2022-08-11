@@ -22,40 +22,21 @@ Feature: Login After Registration Feature
     And click un My account button
     And click on Login button
     And write user credentials
-      | username | ODZE@ODZE.LV |
-      | password | 123PASSWORD  |
+      | username | VIJA@ZEMITE.LV |
+      | password | 159PAROLE      |
     When click on login
     Then I see error message
 
   @US1S1T21
-  Scenario: US1S1T20 Login with incorrect
+  Scenario: US1S1T20 Login with incorrect user
     Given I am on the shop webpage
     And click un My account button
     And click on Login button
     And write user credentials
-      | username | udkm@gmail.fr |
+      | username | talu@talu.lv |
       | password | hahaupwnd     |
     When click on login
-    Then I see error message
-
-  @US1S1T21
-  Scenario: US1S1T21 Login with incorrect
-    Given I am on the shop webpage
-    And click un My account button
-    And click on Login button
-    And write user credentials
-      | username | udkm@gmail.fr |
-      | password | hahaupwnd     |
-    When click on login
-    Then I see error message
-
-  @US1S1T22
-  Scenario: US1S1T22 Login blank credentials
-    Given I am on the shop webpage
-    And click un My account button
-    And click on Login button
-    When click on login
-    Then I see error message
+    Then I see error message wrong user or password
 
   @US1S1T24
   Scenario: US1S1T24 Login with special characters
@@ -72,42 +53,47 @@ Feature: Login After Registration Feature
   Scenario: US1S1T27 Forgot password with unregistered email
     Given I am on the shop webpage
     And click un My account button
+    And click on Login button
     And Click Forgotten
-    And write unregistered email
-    When click on login
-    Then I see error message2
+    And write forgotten email1
+    When click continue
+    Then I see error messageFP
 
   @US1S1T28
   Scenario: US1S1T28 Forgot password with incorrect email
     Given I am on the shop webpage
     And click un My account button
+    And click on Login button
     And Click Forgotten
-    And write incorrect email format
-    When click on login
-    Then I see error message2
+    And write forgotten email3
+    When click continue
+    Then I see error messageFP
   @US1S1T29
   Scenario: US1S1T29 Forgot password without email
     Given I am on the shop webpage
     And click un My account button
+    And click on Login button
     And Click Forgotten
-    When click on login
-    Then I see error message2
+    When click continue
+    Then I see error messageFP
 
   @US1S1T30
   Scenario: US1S1T30 Forgot password without @ email
     Given I am on the shop webpage
     And click un My account button
+    And click on Login button
     And Click Forgotten
-    And write incorrect without @ email
-    When click on login
-    Then I see error message2
+    And write forgotten email2
+    When click continue
+    Then I see error messageFP
 
   @US1S1T31
   Scenario: US1S1T31 Forgot password back clickable
     Given I am on the shop webpage
     And click un My account button
+    And click on Login button
     And Click Forgotten
     When click back
-    Then I redirected to "Account" page
+    Then I redirected to "Login" page
 
 
