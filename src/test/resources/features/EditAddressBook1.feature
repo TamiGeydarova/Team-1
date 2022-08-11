@@ -31,7 +31,7 @@ Feature: Edit Address Book1
     And I choose Region Berat from dropdown menu
     And Click continue button
     Then Check confirmation message
-   # And Check Country and Region are updated
+   Then Check Country and Region are updated
 
   @US2S1T22
   Scenario: US2S1T22 Edit Address Book Select Empty Country filed in drop down menu

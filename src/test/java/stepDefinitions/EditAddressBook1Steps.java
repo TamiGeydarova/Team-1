@@ -5,6 +5,7 @@ import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import junit.framework.Assert;
 import org.openqa.selenium.By;
 import pageObjects.EditAddressBook1Page;
 import pageObjects.Page;
@@ -88,11 +89,12 @@ public class EditAddressBook1Steps extends GeneralSteps {
         driver.findElement(By.xpath("//*[@id=\"input-zone\"]/option[2]")).click();
     }
 
-//    @And("^Check Country and Region are updated$")
-  //  public void iCheckCountryAndRegionUpdated() {
-    //    assertEquals("Berat", driver.findElement(By.xpath("//*[@id=\"content\"]/div[1]/table/tbody/tr[1]/td[1]/text()[4]")).getText());;
+    @Then("^Check Country and Region are updated$")
+    public void iCheckCountryAndRegionUpdated() {
+        assertTrue(driver.findElement(By.className("text-left")).getText().contains("Albania"));
+        assertTrue(driver.findElement(By.className("text-left")).getText().contains("Berat"));
 
-//}
+    }
 
     @And("^I clear Country from dropdown menu$")
     public void iClearCountryField() {
