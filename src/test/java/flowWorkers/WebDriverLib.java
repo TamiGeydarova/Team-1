@@ -29,7 +29,7 @@ public class WebDriverLib implements WebDriver {
     private String chromeDriver;
     private String firefoxDriver;
     private String ieDriver;
-    
+
     public void openBrowser() {
         if(OS.contains("windows")) {
             chromeDriver = "chromedriver.exe";
