@@ -58,7 +58,7 @@ public class EditAddressBookSteps extends GeneralSteps{
     };
 
     @Then("^I see a message$")
-    public void iSeeASuccessfulMessage() throws Throwable {
+    public void iSeeAMessage() throws Throwable {
         editAddressBookPage.checkTheAlertMsg();
     };
 
@@ -70,6 +70,11 @@ public class EditAddressBookSteps extends GeneralSteps{
         }
         //I have to check url first than the string!
         assertTrue(driver.getCurrentUrl().contains("http://www.demoshop24.com/index.php?route=account/address/edit&address_id="));
+
+//        @Then("^Check Country and Region are updated$")
+//        public void iCheckCountryAndRegionUpdated() {
+//            assertTrue(driver.findElement(By.className("text-left")).getText().contains("Albania"));
+//            assertTrue(driver.findElement(By.className("text-left")).getText().contains("Berat"));
 
 //        USELESS STUFF
 //        Pattern curPage = Pattern.compile("http://www.demoshop24.com/index.php?route=account/address/edit&address_id=3284");
