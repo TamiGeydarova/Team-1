@@ -10,6 +10,4 @@ public class Page {
 		this.driver = driver;
 	}
 
-    public Page() {
-    }
 }
