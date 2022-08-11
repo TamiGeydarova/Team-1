@@ -1,4 +1,4 @@
-@runAll
+@Team1
 Feature: Register scenario tested
 
   Background:
