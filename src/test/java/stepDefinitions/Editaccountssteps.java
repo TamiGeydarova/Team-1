@@ -65,41 +65,10 @@ public class Editaccountssteps extends GeneralSteps {
     public void pressContinue() {
         editaccountsPage.clickContinueButton();
     }
-    //@US21T4
-
-    @And("^Select Change your password from My account$")
-    public void selectChangeYourPasswordFromMyAccount() throws Throwable {
-        // EditaccountsPage.clickChangePassword();
-    }
-
-    @And("^I enter New password and conform password$")
-    public void iEnterNewPasswordAndConformPassword(Map<String, String> userData) throws Throwable {
-        //  EditaccountsPage.changePassword(userData.get("changepass")), userData.get("confirmpass"));
-
-    }
-
-    @Then("^Select continue button\\.$")
-    public void selectContinueButton() throws Throwable {
-        // EditaccountsPage.clickContinue();
-    }
-
-
-    //@US2S1T5//
 
     @And("^I select Address Book$")
     public void iSelectAddressBook() throws InterruptedException {
         driver.findElement(By.xpath("//a[normalize-space()='Address Book']")).click();
-    }
-
-
-    //@And("^I click Edit\\.$")
-    // public void iClickEdit()  {
-    //driver.findElement(By.xpath//("//td[@class='pull-right']//a[@class='btn btn-info']")).click();
-    //  }
-
-    @And("^I mofifying the Company name\\.$")
-    public void iMofifyingTheCompanyName() {
-        // EditaccountsPage.enterText
     }
 
     @Then("^select continue\\.$")
@@ -108,31 +77,19 @@ public class Editaccountssteps extends GeneralSteps {
     }
 
 
-//@US2S1T7
-
-    @And("^i select Edit account information\\.$")
-    public void iSelectEditAccountInformation() {
-        // driver.findElement(By.xpath())
-    }
-
-
-    @And("^I enter my First name Last name and Telephone Number$")
-    public void iEnterMyFirstNameLastNameAndTelephoneNumber() {
-    }
-
-    @And("^I click continue$")
-    public void iClickContinue() {
-    }
-
-    @Then("^Warning message displays\\.$")
-    public void warningMessageDisplays() {
-    }
-
-
     @And("^I click Edit$")
     public void iClickEdit() {
         editaccountsPage.iClickOnEditBtn(0);
     }
+
+    @And("^change your password from submenu \"([^\"]*)\"$")
+    public void changeYourPasswordFromSubmenu(String value)  {
+        editaccountsPage.userChangePassword();
+        editaccountsPage.editNewPassword(value);
+        editaccountsPage.newEditPassword(value);
+        editaccountsPage.resetPassword();
+    }
+
 }
 
 

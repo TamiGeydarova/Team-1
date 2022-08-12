@@ -74,6 +74,19 @@ public class EditaccountsPage extends Page {
     @FindBy(id = "input-zone")
     private WebElement dropdownRegState;
 
+    @FindBy(xpath = "//a[contains(text(), 'Change your password')]")
+    private WebElement changePassword;
+
+    @FindBy(id = "input-password")
+    private WebElement editPassword;
+
+    @FindBy(xpath = "//input[@id='input-confirm']")
+    private WebElement newEditPassword;
+
+    @FindBy(xpath = "//input[@value='Continue']")
+    private WebElement resetButton;
+
+
     public EditaccountsPage(WebDriverLib driver) {
         super(driver);
         PageFactory.initElements(driver, this);
@@ -172,6 +185,22 @@ public class EditaccountsPage extends Page {
     public void iClickOnEditBtn(int index) {
         driver.findElements(By.className("btn-info")).get(index).click();
     }
+
+    public void resetPassword(){
+        resetButton.click();
+    }
+    public void userChangePassword(){
+        changePassword.click();
+    }
+
+    public void editNewPassword(String value){
+        editPassword.sendKeys(value);
+
+    }
+    public void newEditPassword(String value){
+        newEditPassword.sendKeys(value);
+    }
+
 
 
 }
